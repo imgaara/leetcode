@@ -8,7 +8,6 @@
  * @project	leetcode
  * @author	Administrator
  * @time	2014-7-18
- * @crop	Rampage inc.
  *
  * 
  */

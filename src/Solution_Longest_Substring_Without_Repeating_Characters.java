@@ -9,7 +9,7 @@ public class Solution_Longest_Substring_Without_Repeating_Characters
         
         boolean[] map = new boolean[255];
         int[] pos = new int[255];
-        
+
         for (int i = 0 ; i < s.length();) {
             int cur = s.charAt(i);
             if (map[cur]) {
