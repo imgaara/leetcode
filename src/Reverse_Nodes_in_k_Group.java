@@ -1,17 +1,10 @@
+import util.ListNode;
+import util.Utils;
+
 /**
  * Created by zero on 14-7-19.
  */
 public class Reverse_Nodes_in_k_Group {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(final int val, final ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     static class Helper {
         ListNode head;
         ListNode tail;
@@ -94,20 +87,6 @@ public class Reverse_Nodes_in_k_Group {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(0, null);
-        ListNode tail = head;
-        for (int i = 1; i < 2; ++i) {
-            tail.next = new ListNode(i, null);
-            tail = tail.next;
-        }
-
-        printList(new Reverse_Nodes_in_k_Group().reverseKGroup(head, 3));
-    }
-
-    private static void printList(ListNode head) {
-        while (null != head) {
-            System.out.println(head.val);
-            head = head.next;
-        }
+        Utils.printList(new Reverse_Nodes_in_k_Group().reverseKGroup(Utils.genList(10), 3));
     }
 }
