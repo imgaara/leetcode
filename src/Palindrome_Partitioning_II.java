@@ -1,58 +1,93 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Administrator on 2014/7/27 0027.
  */
 public class Palindrome_Partitioning_II {
+
     static class Helper {
-        int min;
+        int val;
     }
 
     public int minCut(String s) {
-        Helper minCut = new Helper();
-        minCut.min = Integer.MAX_VALUE;
-        List<String> cur = new ArrayList<String>();
-        partition_(s, 0, s.length(), cur, minCut);
-        return minCut.min;
+        Helper helper = new Helper();
+        helper.val = Integer.MAX_VALUE;
+        int[] cache = new int[s.length() + 1];
+        Arrays.fill(cache, -1);
+        partition_(s, 0, s.length(), 0, helper, cache);
+        return helper.val;
     }
 
-    private void partition_(String s, int start, int end, List<String> cur, Helper minCut)
+    private int partition_(String s, int start, int end, final int level, Helper helper, int[] cache)
     {
-        if (start >= end)
+        if (start >= end - 1)
         {
-            if (cur.size() < minCut.min) {
-                minCut.min = cur.size();
+            if (level < helper.val) {
+                helper.val = level;
             }
-            return;
+            return 0;
         }
 
-        for (int i = start + 1; i <= end; ++i)
+        if (level >= helper.val) {
+            return -1;
+        }
+
+        if (cache[start] != -1) {
+            int cur = level + cache[start];
+            if (cur < helper.val) {
+                helper.val = cur;
+            }
+            return cache[start];
+        }
+
+        int min = Integer.MAX_VALUE;
+        for (int i = end; i >= start+1; i--)
         {
-            String pali = isPalindrome(s, start, i);
-            if (null == pali)
+            if (!isPalindrome(s, start, i))
             {
                 continue;
             }
             else
             {
-                cur.add(pali);
-                partition_(s, i, end, cur, minCut);
-                cur.remove(cur.size() - 1);
+                if (i == end) {
+                    if (level < helper.val) {
+                        helper.val = level;
+                    }
+                    cache[start] = 0;
+                    return 0;
+                } else {
+                    int cur = partition_(s, i, end, level + 1, helper, cache);
+                    if (cur != -1) {
+                        cache[i] = cur;
+                        if (cur < min) {
+                            min = cur;
+                        }
+                    }
+                }
             }
         }
+
+        return min == Integer.MAX_VALUE ? -1 : 1 + min;
     }
 
-    private String isPalindrome(String s, int start, int end)
+    private boolean isPalindrome(String s, int start, int end)
     {
         for (int i = start, j = end - 1; i < j; ++i, --j)
         {
             if (s.charAt(i) != s.charAt(j))
             {
-                return null;
+                return false;
             }
         }
 
-        return s.substring(start, end);
+        return true;
+    }
+
+    public static void main(String[] args) {
+        long start = System.currentTimeMillis();
+        System.out.println(new Palindrome_Partitioning_II().minCut("ccaacabacb"));
+        System.out.println(System.currentTimeMillis() - start);
     }
 }
