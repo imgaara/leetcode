@@ -35,4 +35,19 @@ public class Utils {
 
         return head;
     }
+
+    public static void print2DCharArray(char[][] arr) {
+        for (int i = 0; i < arr.length; ++i) {
+            System.out.println(arr[i]);
+        }
+    }
+
+    public static char[][] strArrayTo2DArray(String[] strs) {
+        char[][] array = new char[strs.length][strs[0].length()];
+        for (int i = 0; i < strs.length; ++i) {
+            array[i] = strs[i].toCharArray();
+        }
+
+        return array;
+    }
 }
