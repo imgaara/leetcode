@@ -1,5 +1,7 @@
 package util;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2014/7/20 0020.
  */
@@ -49,5 +51,11 @@ public class Utils {
         }
 
         return array;
+    }
+
+    public static <T> void printListList(List<List<T>> list) {
+        for (List<?> l : list) {
+            System.out.println(l);
+        }
     }
 }
