@@ -11,7 +11,7 @@
  * 
  * 
  */
-public class Solution_Divide_Two_Integers
+public class Divide_Two_Integers
 {
     public int divide(int dividend, int divisor)
     {
@@ -57,7 +57,7 @@ public class Solution_Divide_Two_Integers
 
     public static void main(String[] args)
     {
-        System.out.println(new Solution_Divide_Two_Integers().divide(-2147483648, 2));
+        System.out.println(new Divide_Two_Integers().divide(-2147483648, 2));
     }
 
 }

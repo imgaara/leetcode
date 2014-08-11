@@ -11,7 +11,7 @@
  *
  * 
  */
-public class Solution_N_Queens_II
+public class N_Queens_II
 {
     public int totalNQueens(int n) {
         int[] status = new int[n];
@@ -52,6 +52,6 @@ public class Solution_N_Queens_II
     
     public static void main(String[] args)
     {
-        System.out.println(new Solution_N_Queens_II().totalNQueens(14));
+        System.out.println(new N_Queens_II().totalNQueens(14));
     }
 }

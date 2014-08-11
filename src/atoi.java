@@ -11,7 +11,7 @@
  *
  * 
  */
-public class Solution_atoi
+public class atoi
 {
     public int atoi(String str) {
         if (null == str || str.length() == 0) {
@@ -69,6 +69,6 @@ public class Solution_atoi
     
     public static void main(String[] args)
     {
-        System.out.println(new Solution_atoi().atoi("2147483648"));
+        System.out.println(new atoi().atoi("2147483648"));
     }
 }

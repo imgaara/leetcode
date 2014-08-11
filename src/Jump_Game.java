@@ -17,7 +17,7 @@ import tools.Reader;
  * 
  * 
  */
-public class Solution_Jump_Game
+public class Jump_Game
 {
     public boolean canJump(int[] A)
     {
@@ -92,7 +92,7 @@ public class Solution_Jump_Game
             B[i] = 25000 - i;
         }
         
-        System.out.println(new Solution_Jump_Game().canJump(B));
+        System.out.println(new Jump_Game().canJump(B));
     }
 
 }

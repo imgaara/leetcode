@@ -18,7 +18,7 @@ import tools.Reader;
  *
  * 
  */
-public class Solution_Distinct_Subsequences
+public class Distinct_Subsequences
 {
     public int numDistinct(String S, String T) {
         StringBuilder sb = new StringBuilder();
@@ -82,6 +82,6 @@ public class Solution_Distinct_Subsequences
         
         String S = data.get(0);
         String T = data.get(1);
-        System.out.println(new Solution_Distinct_Subsequences().numDistinct("rabbbit", "rabbit"));
+        System.out.println(new Distinct_Subsequences().numDistinct("rabbbit", "rabbit"));
     }
 }

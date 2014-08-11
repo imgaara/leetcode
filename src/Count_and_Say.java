@@ -12,7 +12,7 @@
  * 
  * 
  */
-public class Solution_Count_and_Say
+public class Count_and_Say
 {
     public String countAndSay(int n)
     {
@@ -38,7 +38,7 @@ public class Solution_Count_and_Say
     
     public static void main(String[] args)
     {
-        System.out.println(new Solution_Count_and_Say().countAndSay(2));
+        System.out.println(new Count_and_Say().countAndSay(2));
         
     }
 }
