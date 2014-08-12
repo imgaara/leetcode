@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * @think: 如果只能在原来的数组上操作？
  * Created by Administrator on 2014/7/27 0027.
  */
 public class Merge_Intervals {
