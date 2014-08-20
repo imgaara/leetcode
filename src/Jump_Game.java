@@ -1,7 +1,8 @@
+import util.Reader;
+
 import java.io.IOException;
 import java.util.Arrays;
 
-import tools.Reader;
 
 
 /**
@@ -12,7 +13,7 @@ import tools.Reader;
  * @file Solution_Jump_Game.java
  * @package
  * @project ZTest
- * @author Administrator
+ * @author www.imgaara.com
  * @time 2014-6-22
  * 
  * 

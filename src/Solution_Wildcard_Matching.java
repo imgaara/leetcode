@@ -1,7 +1,8 @@
+import util.Reader;
+
 import java.io.IOException;
 import java.util.Arrays;
 
-import tools.Reader;
 
 
 /**

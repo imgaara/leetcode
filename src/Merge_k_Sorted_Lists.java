@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Created by Administrator on 2014/7/24 0024.
+ * O((N0*logk + N1*log(k-1) + Ni*log(k-i) + 1)   [N0<=N1<=N2...]
+ * there is another way to do it (merger lists one be one): O(N0+N1+...)
+ *
+ * Created by www.imgaara.com on 2014/7/24 0024.
  */
 public class Merge_k_Sorted_Lists {
     public ListNode mergeKLists(List<ListNode> lists) {
