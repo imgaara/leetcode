@@ -17,7 +17,7 @@ public class Word_Break {
         }
 
         if (results[index] != 0) {
-            return results[index] == 1 ? true : false;
+            return results[index] == 1;
         }
 
 

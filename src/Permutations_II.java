@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2014/7/26 0026.
@@ -21,7 +18,7 @@ public class Permutations_II {
             return;
         }
 
-        Set<Integer> used = new HashSet<>();
+        Set<Integer> used = new HashSet<Integer>();
 
         for (int i = start; i < num.length; ++i) {
             if (used.contains(num[i])) {

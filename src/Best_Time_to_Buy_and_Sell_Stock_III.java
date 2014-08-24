@@ -3,6 +3,7 @@ import java.util.PriorityQueue;
 import java.util.TreeSet;
 
 /**
+ * find max in 0...i and i+1...n
  * Created by Administrator on 2014/7/29 0029.
  */
 public class Best_Time_to_Buy_and_Sell_Stock_III {

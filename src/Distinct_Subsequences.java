@@ -39,7 +39,6 @@ public class Distinct_Subsequences
         
         int[][] matrix = new int[SS.length() + 1][T.length() + 1];
         for (int i = 0; i <= SS.length(); ++i) {
-            matrix[i] = new int[T.length() + 1];
             Arrays.fill(matrix[i], -1);
         }
        

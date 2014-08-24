@@ -24,11 +24,12 @@ public class Maximal_Rectangle {
             for (int j = 0; j < n; ++j) {
                 if (matrix[i][j] == '1') {
                     ++maxHeightFromThisRow[j];
+                    // 从0到n的收缩过程
                     furthestLeft[j] = Math.max(furthestLeft[j], lastLeftCanTo);
                 } else {
-                    lastLeftCanTo = j + 1;
-                    maxHeightFromThisRow[j] = 0;
-                    furthestLeft[j] = 0;
+                    lastLeftCanTo = j + 1; // position after '0'
+                    maxHeightFromThisRow[j] = 0; // 高度被截断
+                    furthestLeft[j] = 0; // 重新开始为下一行做准备
                     furthestRight[j] = n;
                 }
             }
