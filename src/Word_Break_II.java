@@ -42,7 +42,54 @@ public class Word_Break_II {
         results[index] = 2;
     }
 
+    public List<String> wordBreak2(String s, Set<String> dict) {
+        boolean[] canBreak = new boolean[s.length() + 1];
+        boolean[][] isWord = new boolean[s.length() + 1][s.length() + 1];
+        canBreak[0] = true;
+        for (int i = 1; i <= s.length(); ++i) {
+            for (int j = 0; j < i; ++j) {
+                String substr = s.substring(j, i);
+                if (canBreak[j] && dict.contains(substr)) {
+                    canBreak[i] = true;
+                    isWord[j][i] = true;
+                }
+            }
+        }
+
+        List<String> ret = new ArrayList<String>();
+        List<String> buff = new ArrayList<String>();
+        genPath(s, s.length(), buff, ret, isWord, canBreak);
+        return ret;
+    }
+
+    private void genPath(String s, int end, List<String> buff, List<String> ret, boolean[][] isWord, boolean[] canBreak) {
+        if (end <= 0) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < buff.size(); ++i) {
+                sb.append(buff.get(buff.size() - 1 - i)).append(' ');
+            }
+
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+            ret.add(sb.toString());
+            return;
+        }
+
+        if (!canBreak[end]) {
+            return;
+        }
+
+        for (int i = end - 1; i >= 0; --i) {
+            if (isWord[i][end]) {
+                buff.add(s.substring(i, end));
+                genPath(s, i, buff, ret, isWord, canBreak);
+                buff.remove(buff.size() - 1);
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(new Word_Break_II().wordBreak("catsanddog", new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"))));
+        System.out.println(new Word_Break_II().wordBreak2("catsanddog", new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"))));
     }
 }

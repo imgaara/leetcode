@@ -43,6 +43,28 @@ public class Decode_Ways {
         return s.charAt(0) == '0' ? 0 : f[0];
     }
 
+    public int numDecodings_2(String s) {
+        if (s.length() == 0) {
+            return 0;
+        }
+
+        int[] f = new int[s.length() + 1];
+        f[0] = 1;
+        f[1] = s.charAt(0) > '0' ? 1 : 0;
+
+        for (int i = 2; i <= s.length(); ++i) {
+            if (s.charAt(i - 2) == '1' || s.charAt(i - 2) == '2' && s.charAt(i - 1) <= '6') {
+                f[i] += f[i - 2];
+            }
+
+            if (s.charAt(i - 1) != '0') {
+                f[i] += f[i - 1];
+            }
+        }
+
+        return f[s.length()];
+    }
+
 
     public static void main(String[] args) {
         System.out.println(new Decode_Ways().numDecodings("001"));

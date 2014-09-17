@@ -1,20 +1,12 @@
-Reverse Words in a String	2014-03-05	14.0%
-Evaluate Reverse Polish Notation	2013-11-27	19.8%
 Max Points on a Line	2013-11-22	10.9%
 Sort List	2013-11-16	20.4%
-Insertion Sort List	2013-11-12	25.2%
-LRU Cache	2013-11-09	13.9%
 Binary Tree Postorder Traversal	2013-11-07	31.0%
 Binary Tree Preorder Traversal	2013-11-05	35.6%
-Reorder List	2013-11-02	20.3%
-Linked List Cycle II	2013-10-30	30.9%
-Linked List Cycle	2013-10-28	35.8%
 Word Break II	2013-10-05	16.3%
 Word Break	2013-10-04	21.0%
 Copy List with Random Pointer	2013-10-03	23.1%
 Single Number II	2013-10-02	33.8%
 Single Number	2013-10-01	45.8%
-Candy	2013-09-30	18.8%
 Gas Station	2013-09-28	25.4%
 Clone Graph	2013-09-24	22.6%
 Palindrome Partitioning II	2013-02-28	18.0%

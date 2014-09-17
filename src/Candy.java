@@ -38,6 +38,33 @@ public class Candy {
         return sum;
     }
 
+    public int candy2(int[] ratings) {
+        int[] incs = new int[ratings.length];
+
+        for (int i = 1, inc = 1; i < ratings.length; ++i) {
+            if (ratings[i] > ratings[i-1]) {
+                incs[i] = inc++;
+            } else {
+                inc = 1;
+            }
+        }
+
+        for (int i = ratings.length - 2, inc = 1; i >= 0; --i) {
+            if (ratings[i] > ratings[i+1]) {
+                incs[i] = Math.max(inc++, incs[i]);
+            } else {
+                inc = 1;
+            }
+        }
+
+        int sum = ratings.length;
+        for (int i = 0; i < incs.length; i++) {
+            sum += incs[i];
+        }
+
+        return sum;
+    }
+
     public static void main(String[] args) {
         System.out.println(new Candy().candy(new int[]{4,2,3,4,1}));
     }
