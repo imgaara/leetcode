@@ -33,18 +33,19 @@ public class Search_for_a_Range
         i = 0;
         j = A.length - 1;
 
-        while (i != j)
+        while (i < j)
         {
             int mid = (i + j) >>> 1;
             System.out.printf("i=%d, j=%d, mid=%d\n", i, j,mid);
             if (A[mid] <= target) {
-                i = ++mid;
+                i = mid+1;
             } else {
                 j = mid;
             }
         }
 
-        int right = i;
+        System.out.printf("i=%d, j=%d\n", i, j);
+        int right = A[i] == target ? i : i - 1;
         if (left == A.length || A[left] != target) {
             return new int[] {-1, -1};
         }
@@ -54,7 +55,7 @@ public class Search_for_a_Range
     
     public static void main(String[] args)
     {
-        int[] pair = new Search_for_a_Range().searchRange(new int[] {2,2}, 2);
+        int[] pair = new Search_for_a_Range().searchRange(new int[] {2,2}, 3);
         System.out.println(pair[0]);
         System.out.println(pair[1]);
     }
