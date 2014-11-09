@@ -1,10 +1,13 @@
 import util.ListNode;
-import util.Utils;
 
 /**
- * Created by zero on 14-7-19.
+ * Created by Administrator on 2014/10/25 0025.
  */
-public class Reverse_Nodes_in_k_Group {
+public class Swap_Nodes_in_Pairs {
+    public ListNode swapPairs(ListNode head) {
+        return reverseKGroup(head, 2);
+    }
+
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
@@ -39,9 +42,5 @@ public class Reverse_Nodes_in_k_Group {
         }
 
         return tail;
-    }
-
-    public static void main(String[] args) {
-        Utils.printList(new Reverse_Nodes_in_k_Group().reverseKGroup(Utils.genList(10), 3));
     }
 }

@@ -62,6 +62,9 @@ public class Substring_with_Concatenation_of_All_Words {
     }
 
     public static void main(String[] args) {
+        System.out.println(-Integer.MIN_VALUE);
+        System.out.println(Integer.MIN_VALUE);
+        System.out.println(Math.abs(Integer.MIN_VALUE));
         System.out.println(new Substring_with_Concatenation_of_All_Words().findSubstring("barfoothefoobarman", new String[]{"foo","bar"}));
     }
 }
