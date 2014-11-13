@@ -1,6 +1,6 @@
 package util;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2014/7/20 0020.
@@ -57,5 +57,60 @@ public class Utils {
         for (List<?> l : list) {
             System.out.println(l);
         }
+    }
+
+    public static TreeNode generateTree(String ... ss) {
+        String[] s = new String[ss.length + 1];
+        System.arraycopy(ss, 0, s, 1, ss.length);
+
+        Map<Integer, TreeNode> map = new HashMap<Integer, TreeNode>();
+
+        for (int i = 1; i < s.length; ++i) {
+            int left = i * 2;
+            int right = i * 2 + 1;
+            TreeNode root = map.get(i);
+            if (null == root) {
+                root = new TreeNode(Integer.valueOf(s[i]));
+                map.put(i, root);
+            }
+
+            if (left < s.length) {
+                TreeNode node = map.get(left);
+                if (null == node) {
+                    String cur = s[left];
+                    node = cur.equals("#") ? null : new TreeNode(Integer.valueOf(cur));
+                    map.put(left, node);
+                }
+
+                root.left = node;
+            }
+
+            if (right < s.length) {
+                TreeNode node = map.get(right);
+                if (null == node) {
+                    String cur = s[right];
+                    node = cur.equals("#") ? null : new TreeNode(Integer.valueOf(cur));
+                    map.put(right, node);
+                }
+
+                root.right = node;
+            }
+        }
+
+        return map.get(1);
+    }
+
+    public static int gcd(int a, int b) {
+        while (b > 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+
+        return a;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Utils.gcd(3, 12));
     }
 }

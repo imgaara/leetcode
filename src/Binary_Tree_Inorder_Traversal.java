@@ -1,5 +1,6 @@
 import util.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public class Binary_Tree_Inorder_Traversal {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> r = new ArrayList<>();
+        List<Integer> r = new ArrayList<Integer>();
 
         TreeNode cur = root;
         TreeNode prev = root;

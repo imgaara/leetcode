@@ -1,5 +1,6 @@
 import util.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
 public class Binary_Tree_Postorder_Traversal {
 
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> r = new ArrayList<>();
+        List<Integer> r = new ArrayList<Integer>();
 
         TreeNode cur = root;
         TreeNode prev = root;
@@ -17,7 +18,7 @@ public class Binary_Tree_Postorder_Traversal {
         dummy.left = cur;
         cur = dummy;
 
-        List<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<Integer>();
 
         while (null != cur) {
             if (null == cur.left) {

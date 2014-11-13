@@ -17,6 +17,7 @@ import java.util.List;
  * @author www.imgaara.com on 2014/7/27 0027.
  */
 public class Spiral_Matrix {
+
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> result = new ArrayList<Integer>();
         if (null == matrix || matrix.length == 0 || matrix[0].length == 0) {
@@ -75,7 +76,53 @@ public class Spiral_Matrix {
         return result;
     }
 
+
+    public List<Integer> spiralOrder2(int[][] matrix) {
+        List<Integer> r = new ArrayList<Integer>();
+        if (0 == matrix.length || 0 == matrix[0].length) {
+            return r;
+        }
+
+        int beginI = 0;
+        int endI = matrix.length - 1;
+        int beginJ = 0;
+        int endJ = matrix[0].length - 1;
+
+        while (true) {
+            for (int j = beginJ; j <= endJ; ++j) {
+                r.add(matrix[beginI][j]);
+            }
+            if (++beginI > endI) {
+                break;
+            }
+
+            for (int i = beginI; i <= endI; ++i) {
+                r.add(matrix[i][endJ]);
+            }
+            if (--endJ < beginJ) {
+                break;
+            }
+
+            for (int j = endJ; j >= beginJ; --j) {
+                r.add(matrix[endI][j]);
+            }
+            if (--endI < beginI) {
+                break;
+            }
+
+            for (int i = endI; i >= beginI; --i) {
+                r.add(matrix[i][beginJ]);
+            }
+            if (++beginJ > endJ) {
+                break;
+            }
+        }
+
+        return r;
+    }
+
+
     public static void main(String[] args) {
-        System.out.println(new Spiral_Matrix().spiralOrder(new int[][] {{3,2}}));
+        System.out.println(new Spiral_Matrix().spiralOrder2(new int[][] {{3,2}}));
     }
 }

@@ -40,6 +40,10 @@ public class Spiral_Matrix_II {
             --end;
         }
 
+        if (begin == end) {
+            a[begin][end] = num;
+        }
+
         return a;
     }
 }

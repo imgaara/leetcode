@@ -32,4 +32,15 @@ public class Flatten_Binary_Tree_to_Linked_List {
             return tailRight;
         }
     }
+
+    public TreeNode flatten_2(TreeNode root, TreeNode calculatedTail){
+        if (null == root) {
+            return calculatedTail;
+        }
+
+        root.right = flatten_2(root.left, flatten_2(root.right, calculatedTail));
+        root.left = null;
+        return root;
+    }
+
 }

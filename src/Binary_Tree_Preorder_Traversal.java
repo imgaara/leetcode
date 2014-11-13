@@ -1,5 +1,7 @@
 import util.TreeNode;
+import util.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
 public class Binary_Tree_Preorder_Traversal {
 
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> r = new ArrayList<>();
+        List<Integer> r = new ArrayList<Integer>();
 
         TreeNode cur = root;
         TreeNode prev = null;
@@ -42,5 +44,11 @@ public class Binary_Tree_Preorder_Traversal {
         }
 
         return r;
+    }
+
+
+    public static void main(String[] args) {
+        TreeNode root = Utils.generateTree("1", "2", "3", "4", "5", "6", "7");
+        System.out.println(new Binary_Tree_Preorder_Traversal().preorderTraversal(root));
     }
 }

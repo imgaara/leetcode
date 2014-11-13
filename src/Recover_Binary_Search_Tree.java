@@ -47,4 +47,39 @@ public class Recover_Binary_Search_Tree {
         TreeNode miss1;
         TreeNode miss2;
     }
+
+
+    public void recoverTree2(TreeNode root) {
+        Helper h = new Helper();
+        traversal_(root, h);
+        int temp = h.first.val;
+        h.first.val = h.second.val;
+        h.second.val = temp;
+    }
+
+    static class Helper {
+        TreeNode prev;
+        TreeNode first;
+        TreeNode second;
+    }
+
+    private void traversal_(TreeNode root, Helper h) {
+        if (null == root) {
+            return;
+        }
+
+        traversal_(root.left, h);
+        if (h.prev != null) {
+            if (h.prev.val > root.val) {
+                if (h.first == null) {
+                    h.first = h.prev;
+                    h.second = root;
+                } else {
+                    h.second = root;
+                }
+            }
+        }
+        h.prev = root;
+        traversal_(root.right, h);
+    }
 }
