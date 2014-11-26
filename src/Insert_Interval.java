@@ -1,9 +1,6 @@
 import util.Interval;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2014/7/27 0027.
@@ -60,6 +57,18 @@ public class Insert_Interval {
         }
 
         return result;
+    }
+
+    public List<Interval> insert2(List<Interval> intervals, Interval newInterval) {
+        Iterator<Interval> it = intervals.iterator();
+        while (it.hasNext()) {
+            Interval cur = it.next();
+            if (cur.start > newInterval.end) {
+                intervals.add(newInterval);
+            }
+        }
+
+        return intervals;
     }
 
     public static void main(String[] args) {

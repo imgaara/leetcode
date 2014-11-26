@@ -56,7 +56,41 @@ public class Regular_Expression_Matching {
         return s.charAt(next) == '*';
     }
 
+
+    public boolean isMatch2(String s, String p) {
+        return isMatch2_(s, 0, p, 0);
+    }
+
+    private boolean isMatch2_(String s, int i, String p, int j) {
+        if (j == p.length()) {
+            return i == s.length();
+        }
+
+        char curS = i < s.length() ? s.charAt(i) : (char) - 1;
+        char curP = p.charAt(j);
+        char next = j < p.length() - 1 ?  p.charAt(j + 1) : (char) -1;
+        if ('*' != next) {
+            if (curS == curP || (curP == '.' && curS != (char)-1)) {
+                return isMatch2_(s, i + 1, p, j + 1);
+            } else {
+                return false;
+            }
+        } else {
+
+            while (curS == curP || (curP == '.' && curS != (char)-1)) {
+                if (isMatch2_(s, i , p, j + 2)) {
+                    return true;
+                }
+                i++;
+                curS = i < s.length() ? s.charAt(i) : (char) - 1;
+            }
+
+            return isMatch2_(s, i , p, j + 2);
+        }
+    }
+
     public static void main(String[] args) {
+        System.out.println(new Regular_Expression_Matching().isMatch2("ab", ".*c"));
         System.out.println(new Regular_Expression_Matching().isMatch("aab", "c*a*b"));
         System.out.println(new Regular_Expression_Matching().isMatch("bbbba", ".*a*a"));
         System.out.println(new Regular_Expression_Matching().isMatch("baccbbcbcacacbbc", "c*.*b*c*ba*b*b*.a*"));

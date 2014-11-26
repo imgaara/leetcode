@@ -39,6 +39,20 @@ public class Jump_Game
         return true;
     }
 
+    public boolean canJump2(int[] A)
+    {
+        int far = 1;
+
+        for (int i = 0; i < far; ++i) {
+            if (i >= A.length) {
+                return true;
+            }
+            far = Math.max(far, i + A[i]);
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) throws IOException
     {
         java.util.List<String> data = Reader.readLines();

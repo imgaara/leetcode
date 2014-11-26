@@ -37,18 +37,22 @@ public class Wildcard_Matching {
             char pChar = j == p.length() ? (char)-1 : p.charAt(j);
             switch (pChar) {
                 case '?' :
-                    break;
+                    break;  //math, next i, j to compare
                 case '*' :
                     hasStar = true;
-                    curP = j;
+                    curP = j; // record current position with star
                     curS = i;
+
+                    // skip continus starts
                     while (curP < p.length() && p.charAt(curP) == '*') {
                         curP++;
                     }
 
                     if (curP == p.length()){
-                        return true;
+                        return true; // last one also start, all match
                     } else {
+                        // start to detect chars after *
+                        // -1, because will do ++i, ++j
                         i = curS - 1;
                         j = curP - 1;
                     }
@@ -56,8 +60,11 @@ public class Wildcard_Matching {
                 default:
                     if (pChar != s.charAt(i)) {
                         if (!hasStar) {
+                            // no start at before, no chance to do look back
                             return false;
                         } else {
+                            // have chance to do look back
+                            // shift string s, left more chars be matched to the star in p
                             curS++;
                             i = curS - 1;
                             j = curP - 1;
@@ -67,10 +74,14 @@ public class Wildcard_Matching {
             }
         }
 
+        // s is match over.
+        // ho, ho**
+        // may still have starts in p
         while (j < p.length() && p.charAt(j) == '*') {
             j++;
         }
 
+        // should walk through all p
         return j == p.length();
     }
 }

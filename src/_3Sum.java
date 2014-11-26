@@ -29,7 +29,33 @@ public class _3Sum {
         return new ArrayList<List<Integer>>(ret);
     }
 
+
+    public List<List<Integer>> threeSumWithDuplicate(int[] num, int target) {
+        final int n = num.length;
+        Arrays.sort(num);
+        Set<List<Integer>> ret = new HashSet<List<Integer>>();
+
+        for (int k = 0; k < n; ++k) {
+            int i = k;
+            int j = n - 1;
+            while (i <= j) {
+                int s = num[i] + num[k] + num[j];
+                if (s > target) {
+                    j--;
+                } else if (s < target) {
+                    i++;
+                } else {
+                    ret.add(Arrays.asList(num[k], num[i], num[j]));
+                    i++;
+                    j--;
+                }
+            }
+        }
+
+        return new ArrayList<List<Integer>>(ret);
+    }
+
     public static void main(String[] args) {
-        System.out.println(new _3Sum().threeSum(new int[]{0,0,0,0}));
+        System.out.println(new _3Sum().threeSumWithDuplicate(new int[]{-1, 1, 0, 2}, 3));
     }
 }
