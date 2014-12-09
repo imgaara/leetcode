@@ -29,6 +29,33 @@ public class First_Missing_Positive {
         return 1;
     }
 
+    public int firstMissingPositive2(int[] A) {
+        final int n = A.length;
+        for (int i = 0; i < n; ++i) {
+            while (A[i] != i + 1) {
+                if (A[i] < 1 || A[i] > n || A[A[i]-1] == A[i]) {
+                    break;
+                }
+
+                swap(A, i, A[i]-1);
+            }
+        }
+
+        for (int i = 1; i <= n; ++i) {
+            if (A[i-1] != i) {
+                return i;
+            }
+        }
+
+        return n + 1;
+    }
+
+    private void swap(int[] A, int i, int j) {
+        int temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
+    }
+
     public static void main(String[] args) {
         System.out.println(new First_Missing_Positive().firstMissingPositive(new int[]{3,4,-1,1}));
     }

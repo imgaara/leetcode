@@ -35,6 +35,34 @@ public class Count_and_Say
         
         return sb.toString();
     }
+
+    public String countAndSay2(int n) {
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
+        s1.append("1");
+
+        while (n-- > 1) {
+            int k = 0;
+            for (int i = 0; i < s1.length() ; ) {
+                if (k != 0 && s1.charAt(i) != s1.charAt(i - 1)) {
+                    char num = s1.charAt(i-1);
+                    s2.append(k).append(num);
+                    k = 0;
+                } else {
+                    i++;
+                    k++;
+                }
+            }
+
+            s2.append(k).append(s1.charAt(s1.length() - 1));
+            StringBuilder temp = s1;
+            s1 = s2;
+            s2 = temp;
+            s2.delete(0, s2.length());
+        }
+
+        return s1.toString();
+    }
     
     public static void main(String[] args)
     {

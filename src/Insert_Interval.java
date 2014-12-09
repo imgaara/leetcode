@@ -71,6 +71,26 @@ public class Insert_Interval {
         return intervals;
     }
 
+    public List<Interval> insert3(List<Interval> intervals, Interval newInterval) {
+        for (int i = 0; i < intervals.size(); ++i) {
+            Interval cur = intervals.get(i);
+            if (newInterval.end < cur.start) {
+                intervals.add(i, newInterval);
+                return intervals;
+            } else if (newInterval.start > cur.end) {
+                continue;
+            } else {
+                newInterval.start = Math.min(cur.start, newInterval.start);
+                newInterval.end = Math.max(cur.end, newInterval.end);
+                intervals.remove(i);
+                i--;
+            }
+        }
+
+        intervals.add(newInterval);
+        return intervals;
+    }
+
     public static void main(String[] args) {
         List<Interval> intervals = Arrays.asList(new Interval(0,4), new Interval(7, 12));
         System.out.println(new Insert_Interval().insert(intervals, new Interval(0,5)));

@@ -100,6 +100,30 @@ public class Longest_Valid_Parentheses {
         return max + 1;
     }
 
+    public int longestValidParentheses3(String s) {
+        Stack<Integer> stack = new Stack();
+        final int n = s.length();
+
+        int max = 0;
+        int last = -1;
+        for (int i = 0; i < n; ++i) {
+            char cur = s.charAt(i);
+            if ('(' == cur) {
+                stack.push(i);
+            } else {
+                if (stack.isEmpty()) {
+                    last = i;
+                } else {
+                    stack.pop();
+                    int start = stack.isEmpty() ? last : stack.peek();
+                    max = Math.max(max, i - start);
+                }
+            }
+        }
+
+        return max;
+    }
+
     public static void main(String[] args) {
         System.out.println(new Longest_Valid_Parentheses().longestValidParentheses(")("));
     }

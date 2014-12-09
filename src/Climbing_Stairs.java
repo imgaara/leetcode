@@ -28,4 +28,19 @@ public class Climbing_Stairs {
         map[n - 2] = climbStairs_(n - 2, map);
         return map[n-1] + map[n-2];
     }
+
+
+
+    public int climbStairs3(int n) {
+        int prev = 1;
+        int cur = 1;
+
+        for (int i = 2; i <= n; ++i) {
+            int temp = cur;
+            cur = prev + cur;
+            prev = temp;
+        }
+
+        return cur;
+    }
 }

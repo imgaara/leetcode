@@ -85,6 +85,27 @@ public class Palindrome_Partitioning_II {
         return true;
     }
 
+    public int minCut2(String s) {
+        int n = s.length();
+        int[] cut = new int[n + 1];
+        boolean[][] p = new boolean[n][n];
+
+        for (int i = -1; i < n; ++i) {
+            cut[i+1] = i;
+        }
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j >= 0; --j) {
+                if (s.charAt(i) == s.charAt(j) && (i - j < 2 || p[j+1][i-1])) {
+                    p[j][i] = true;
+                    cut[i+1] = Math.min(cut[i+1], cut[j] + 1);
+                }
+            }
+        }
+
+        return cut[n];
+    }
+
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         System.out.println(new Palindrome_Partitioning_II().minCut("ccaacabacb"));
