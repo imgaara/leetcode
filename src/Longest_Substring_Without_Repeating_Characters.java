@@ -37,6 +37,33 @@ public class Longest_Substring_Without_Repeating_Characters
         
         return max;
     }
+
+    public int lengthOfLongestSubstring2(String s) {
+        if (null == s || s.length() == 0) {
+            return 0;
+        }
+
+        int[] map = new int[Character.MAX_VALUE];
+        Arrays.fill(map, -1);
+        int max = 0;
+        int start = 0;
+
+        for (int i = 0; i < s.length(); ++i) {
+            char ch = s.charAt(i);
+            if (map[ch] >= start) {
+                int len = i - start;
+                if (len > max) {
+                    max = len;
+                }
+                start = map[ch] + 1;
+            }
+
+            map[ch] = i;
+        }
+
+        int last = s.length() - start;
+        return last > max ? last : max;
+    }
     
     public static void main(String[] args)
     {

@@ -7,10 +7,21 @@ import java.util.Set;
 
 
 /**
- * 
+ *
  */
 
 /**
+ *
+ * Given a string S and a string T, count the number of distinct subsequences of T in S.
+
+ A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+
+ Here is an example:
+ S = "rabbbit", T = "rabbit"
+
+ Return 3.
+
+
  * @file	Solution_Distinct_Subsequences.java
  * @package	
  * @project	ZTest
@@ -75,6 +86,31 @@ public class Distinct_Subsequences
         
         return count;
     }
+
+    public int numDistinct2(String S, String T) {
+        if (S.length() == 0) {
+            return 0;
+        }
+
+
+        int[][] f = new int[S.length() + 1][T.length() + 1];
+        for (int i = 0; i < S.length(); ++i) {
+            f[i][0] = 1;
+        }
+
+        for (int i = 0; i < S.length(); ++i) {
+            for (int j = 0; j < T.length(); ++j) {
+                f[i+1][j+1] = f[i][j+1];
+                if (S.charAt(i) == T.charAt(j)) {
+                    f[i+1][j+1] += f[i][j];
+                }
+            }
+        }
+
+        return f[S.length()][T.length()];
+    }
+
+
     
     public static void main(String[] args) throws IOException
     {

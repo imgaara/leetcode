@@ -22,7 +22,7 @@ public class Divide_Two_Integers
 
         boolean isNeg = (dividendL > 0 && divisorL < 0 || dividendL < 0 && divisorL > 0);
         
-        if (dividendL < 0)
+        if (dividen dL < 0)
         {
             dividendL = -dividendL;
         }
